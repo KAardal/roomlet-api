@@ -1,8 +1,6 @@
 {
   "rules": {
-    "react/prop-types": [
-      0
-    ],
+    "react/prop-types": [0],
     "quotes": [
       "error",
       "single",
@@ -10,24 +8,13 @@
         "allowTemplateLiterals": true
       }
     ],
-    "comma-dangle": [
-      "error",
-      "always-multiline"
-    ],
+    "comma-dangle": ["error", "always-multiline"],
     "no-console": "off",
     "no-unused-vars": "off",
-    "indent": [
-      "error",
-      2
-    ],
-    "semi": [
-      "error",
-      "never"
-    ]
+    "indent": ["error", 2],
+    "semi": [0]
   },
-  "plugins": [
-    "react"
-  ],
+  "plugins": ["react"],
   "parserOptions": {
     "sourceType": "module",
     "ecmaFeatures": {
@@ -47,7 +34,5 @@
     "__TITLE__": false,
     "__DEBUG__": false
   },
-  "extends": [
-    "eslint:recommended"
-  ]
+  "extends": ["eslint:recommended"]
 }
