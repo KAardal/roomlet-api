@@ -3,7 +3,7 @@ import Mongoose, { Schema } from 'mongoose';
 const listingSchema = new Schema({
   userId: { type: String },
   name: { type: String },
-  listingCreatedOn: { type: Date },
+  listingCreatedOn: { type: String },
   listingURL: { type: String },
   verified: { type: Boolean },
   cost: { type: Number },
@@ -11,7 +11,7 @@ const listingSchema = new Schema({
   petsAllowed: { type: Boolean },
   nonSmoking: { type: Boolean },
   comment: { type: String },
-  parkingSpaces: { type: Number }
+  parkingSpaces: { type: Number },
 });
 
 export const Listing = Mongoose.model('Listing', listingSchema);

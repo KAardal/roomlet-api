@@ -14,7 +14,7 @@ app.use(morgan('dev'));
 app.use(
   cors({
     origin: 'http://localhost:8080',
-    credentials: true
+    credentials: true,
   })
 );
 
@@ -25,7 +25,7 @@ app.use(errorHandler);
 
 const state = {
   isOn: false,
-  http: null
+  http: null,
 };
 
 export const start = () => {
