@@ -1,10 +1,9 @@
-import Mongoose, { Schema } from 'mongoose'
+import Mongoose, { Schema } from 'mongoose';
 
 const listingSchema = new Schema({
-  profileId: {
-    type: Mongoose.Schema.Types.ObjectId,
-    ref: 'profile',
-  },
+  userId: { type: String },
+  name: { type: String },
+  listingCreatedOn: { type: Date },
   listingURL: { type: String },
   verified: { type: Boolean },
   cost: { type: Number },
@@ -12,7 +11,7 @@ const listingSchema = new Schema({
   petsAllowed: { type: Boolean },
   nonSmoking: { type: Boolean },
   comment: { type: String },
-  parkingSpaces: { type: Number },
-})
+  parkingSpaces: { type: Number }
+});
 
-const Listing = Mongoose.model('listing', listingSchema)
+export const Listing = Mongoose.model('Listing', listingSchema);
