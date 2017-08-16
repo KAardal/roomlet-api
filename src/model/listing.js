@@ -3,9 +3,10 @@ import Mongoose, { Schema } from 'mongoose';
 const listingSchema = new Schema({
   userId: { type: String },
   title: { type: String },
-  listingCreatedOn: { type: Date },
+  updating: { type: Boolean, default: false },
+  listingCreatedOn: { type: Date, default: new Date() },
   listingURL: { type: String },
-  verified: { type: Boolean },
+  verified: { type: Boolean, default: false },
   cost: { type: Number },
   landlordPhone: { type: Number },
   petsAllowed: { type: Boolean },
