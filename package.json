@@ -7,8 +7,7 @@
     "lint": "eslint .",
     "start": "node index.js",
     "watch": "nodemon index.js",
-    "test": "jest --runInBand",
-    "test-watch": "jest --watch --runInBand",
+    "test": "nyc mocha",
     "mongo-on": "mkdir -p ./db && mongod --dbpath ./db",
     "mongo-off": "killall mongod"
   },
@@ -30,8 +29,10 @@
     "jsonwebtoken": "^7.4.2",
     "jwks-rsa": "^1.2.0",
     "lodash": "^4.17.4",
+    "mocha": "^3.5.0",
     "mongoose": "^4.11.5",
     "morgan": "^1.8.2",
+    "nyc": "^11.1.0",
     "socket.io": "^2.0.3",
     "superagent": "^3.5.2"
   },
