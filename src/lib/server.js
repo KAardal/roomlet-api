@@ -9,6 +9,7 @@ import * as mongo from './mongo.js'
 import listingRouter from '../router/listing'
 import fourOhFour from '../middleware/four-oh-four.js'
 import errorHandler from '../middleware/error-middleware.js'
+require('dotenv').config({ path: `${__dirname}/../../.test.env` })
 
 const app = express()
 
@@ -32,7 +33,7 @@ app.use(
   })
 )
 
-app.use(jwtCheck)
+if (!process.env.__TESTING__) app.use(jwtCheck)
 
 app.use(listingRouter)
 
