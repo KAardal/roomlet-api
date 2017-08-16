@@ -1,8 +1,7 @@
-'use strict'
+'use strict';
 // load env
-require('dotenv').config()
-// assert env
-require('./src/lib/assert-env.js')
+require('dotenv').config();
+
 // start server
-require('babel-register')
-require('./src/main.js')
+require('babel-register');
+require('./src/main.js');
