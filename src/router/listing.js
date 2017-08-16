@@ -4,9 +4,7 @@ const listingRouter = (module.exports = new require('express').Router())
 import { Listing } from '../model/listing.js'
 
 listingRouter.post('/api/listings', jsonParser.json(), (req, res, next) => {
-  console.log(req.body)
   console.log('hit POST /api/listings')
-  console.log('Listing: ', Listing)
   new Listing(req.body).save().then(listing => res.json(listing)).catch(next)
 })
 
