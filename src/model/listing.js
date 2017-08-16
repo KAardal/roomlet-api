@@ -2,7 +2,7 @@ import Mongoose, { Schema } from 'mongoose'
 
 const listingSchema = new Schema({
   userId: { type: String },
-  name: { type: String },
+  title: { type: String },
   listingCreatedOn: { type: Date },
   listingURL: { type: String },
   verified: { type: Boolean },

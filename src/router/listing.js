@@ -1,11 +1,9 @@
-'use strict'
-
-const jsonParser = require('body-parser').json()
+import jsonParser from 'body-parser'
 const listingRouter = (module.exports = new require('express').Router())
 
-const { Listing } = require('../model/listing.js')
+import { Listing } from '../model/listing.js'
 
-listingRouter.post('/api/listings', jsonParser, (req, res, next) => {
+listingRouter.post('/api/listings', jsonParser.json(), (req, res, next) => {
   console.log(req.body)
   console.log('hit POST /api/listings')
   console.log('Listing: ', Listing)
@@ -20,7 +18,7 @@ listingRouter.get('/api/listings/:id', (req, res, next) => {
 })
 
 listingRouter.get('/api/listings', (req, res, next) => {
-  console.log('hit /api/listings')
+  console.log('hit GET /api/listings')
 
   let pageNumber = Number(req.query.page)
   if (!pageNumber || pageNumber < 1) pageNumber = 1
@@ -34,7 +32,7 @@ listingRouter.get('/api/listings', (req, res, next) => {
     .catch(next)
 })
 
-listingRouter.put('/api/listings/:id', jsonParser, (req, res, next) => {
+listingRouter.put('/api/listings/:id', jsonParser.json(), (req, res, next) => {
   console.log('hit PUT /api/listings/:id', req.params)
   Listing.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then(listing => {
@@ -45,7 +43,6 @@ listingRouter.put('/api/listings/:id', jsonParser, (req, res, next) => {
 
 listingRouter.delete('/api/listings/:id', (req, res, next) => {
   console.log('hit DELETE /api/listings/:id')
-
   Listing.findByIdAndRemove(req.params.id)
     .then(res.sendStatus(204))
     .catch(next)
