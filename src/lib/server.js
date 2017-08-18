@@ -32,7 +32,7 @@ app.use(
   })
 )
 
-app.use(jwtCheck)
+if (process.env.__TEST__) app.use(jwtCheck)
 
 app.use(listingRouter)
 

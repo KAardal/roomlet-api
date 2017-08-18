@@ -1,26 +1,27 @@
-const Listing = require('../../src/model/listing.js');
+const Listing = require('../../src/model/listing.js')
 
-const faker = require('faker');
-const mockListing = (module.exports = {});
+const faker = require('faker')
+const mockListing = (module.exports = {})
 
 mockListing.createOne = () => {
-  let result = {};
+  let result = {}
   return new Listing({
-    userId: faker.Internet.user_name(),
-    name: faker.Seinfeld.character(),
-    listingCreatedOn: faker.Date(),
-    listingURL: faker.Address.street_name(),
+    userId: faker.name.findName(),
+    title: faker.name.findName(),
+    updating: false,
+    listingCreatedOn: faker.date.past(),
+    listingURL: faker.address.streetAddress(),
     verified: false,
-    cost: faker.Number.number(3),
-    landlordPhone: faker.PhoneNumber.phone_number(),
+    cost: faker.random.number(3),
+    landlordPhone: faker.phone.phoneNumber(7),
     petsAllowed: false,
     nonSmoking: false,
-    comment: faker.Seinfeld.quote(),
-    parkingSpaces: faker.Number.number(6),
+    comment: faker.name.findName(),
+    parkingSpaces: faker.random.number(6),
   })
     .save()
     .then(listing => {
-      result.listing = listing;
-      return result;
-    });
-};
+      result.listing = listing
+      return result
+    })
+}
