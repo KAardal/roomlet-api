@@ -11,7 +11,5 @@ export default (err, req, res, next) => {
 
   if (err.message.includes('objectid failed')) return res.sendStatus(404)
 
-  if (err.message.includes('unauthorized')) return res.sendStatus(401)
-
   res.sendStatus(500)
 }
