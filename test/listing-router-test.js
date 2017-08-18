@@ -122,6 +122,34 @@ describe('testing listing router', () => {
           expect(res.status).toEqual(200)
         })
     })
+    it('should return a 200, return all listings!!', () => {
+      return superagent
+        .post(`${API_URL}/api/listings`)
+        .send({
+          userId: '345345',
+          title: 'sup',
+          updating: false,
+          listingCreatedOn: new Date(),
+          listingURL: '34tegegegre',
+          verified: false,
+          cost: 345345,
+          landlordPhone: 345345,
+          petsAllowed: false,
+          nonSmoking: false,
+          comment: 'sup',
+          parkingSpaces: 2,
+        })
+        .then(res => {
+          console.log(res.body, 'this is the repsonse!!!')
+          tempListing = res.body
+          return superagent.get(`${API_URL}/api/listings`)
+        })
+        .catch(res => {
+          console.log(res.status, 'here is the status!!!')
+          expect(res).toExist()
+          expect(res.status).toEqual(200)
+        })
+    })
     it('should return a cast to object id, 404 error', () => {
       return superagent
         .post(`${API_URL}/api/listings`)
@@ -169,6 +197,34 @@ describe('testing listing router', () => {
         })
         .then(res => {
           tempListing = res.body
+          tempListing.userId = 'wrong id!!'
+          return superagent.get(
+            `${API_URL}/api/listingssdfdf/?${tempListing.userId.toString()}`
+          )
+        })
+        .catch(res => {
+          expect(res.status).toEqual(404)
+        })
+    })
+    it('should return a cast to object id, 404 error', () => {
+      return superagent
+        .post(`${API_URL}/api/listings`)
+        .send({
+          userId: '345345',
+          title: 'sup',
+          updating: false,
+          listingCreatedOn: new Date(),
+          listingURL: '34tegegegre',
+          verified: false,
+          cost: 345345,
+          landlordPhone: 345345,
+          petsAllowed: false,
+          nonSmoking: false,
+          comment: 'sup',
+          parkingSpaces: 2,
+        })
+        .then(res => {
+          tempListing = res.body
           return superagent.get(
             `${API_URL}/api/listings/?${tempListing.userId.toString()}`
           )
@@ -179,7 +235,7 @@ describe('testing listing router', () => {
     })
   })
   describe('testing PUT /api/listings', () => {
-    it.only('should respond with the updated listing', () => {
+    it('should respond with the updated listing', () => {
       let tempListing, tempUser
       return superagent
         .post(`${API_URL}/api/listings`)
@@ -208,7 +264,7 @@ describe('testing listing router', () => {
           expect(res.body.title).toEqual('updated')
         })
     })
-    it.only('should send over a 404 error', () => {
+    it('should send over a 404 error', () => {
       let tempListing, tempUser
       return superagent
         .post(`${API_URL}/api/listings`)
@@ -240,7 +296,7 @@ describe('testing listing router', () => {
   })
 
   describe('testing the Delete route', () => {
-    it.only('should delete the listing put into the database...', () => {
+    it('should delete the listing put into the database...', () => {
       let tempListing, tempUser
       return superagent
         .post(`${API_URL}/api/listings`)
