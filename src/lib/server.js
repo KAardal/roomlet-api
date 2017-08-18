@@ -27,7 +27,7 @@ const jwtCheck = jwt({
 app.use(morgan('dev'))
 app.use(
   cors({
-    origin: 'http://localhost:8080',
+    origin: process.env.CORS_ORIGINS,
     credentials: true,
   })
 )
