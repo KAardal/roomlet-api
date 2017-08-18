@@ -1,1 +1,3 @@
 # roomletAPI
+
+![Roomlet](./roomlet.png)
