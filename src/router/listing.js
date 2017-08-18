@@ -10,7 +10,8 @@ listingRouter.post('/api/listings', jsonParser.json(), (req, res, next) => {
 
 listingRouter.get('/api/listings/:id', (req, res, next) => {
   console.log('hit GET /api/listings/:id')
-  Listing.findById(req.params.id)
+  console.log('req@@#@#@#@#@$@#$$#%#$', req.params.id)
+  Listing.find({ userID: req.params.userId })
     .then(listing => res.json(listing))
     .catch(next)
 })
